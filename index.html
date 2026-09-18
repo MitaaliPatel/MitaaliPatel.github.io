@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mitaali Patel | Data Analyst</title>
+  <meta name="description" content="Data Scientist & ML Engineer. MPS Data Science, UMBC '26." />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #0b0f0c;
+      --bg2:        #0e1410;
+      --surface:    #121a14;
+      --card:       #161e18;
+      --card-hover: #1b2520;
+      --border:     rgba(255,255,255,0.06);
+      --border-mid: rgba(255,255,255,0.10);
+      --green:      #4ade80;
+      --green-dim:  #2d7a4a;
+      --green-bg:   rgba(74,222,128,0.07);
+      --cream:      #e8e0cc;
+      --cream-dim:  #a89e88;
+      --cream-muted:#5a5448;
+      --mono:       'JetBrains Mono', monospace;
+      --sans:       'Inter', sans-serif;
+      --display:    'Bricolage Grotesque', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--cream);
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--green); color: #000; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(11,15,12,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+
+    .nav-mono {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-name {
+      font-family: var(--display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-sep { color: var(--cream-muted); font-size: 12px; }
+
+    .avail {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--green);
+      border: 1px solid rgba(74,222,128,0.25);
+      padding: 3px 10px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .avail-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .nav-links { display: flex; gap: 2px; list-style: none; }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--cream-muted);
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: color .15s, background .15s;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links a:hover { color: var(--cream); background: var(--surface); }
+
+    /* ── PAGE ── */
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 88px 2rem 6rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 4rem 0 4rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .hero-left {}
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--green);
+    }
+
+    .hero-name {
+      font-family: var(--display);
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--cream);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name span { color: var(--green); }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--cream-dim);
+      line-height: 1.85;
+      margin-bottom: 2rem;
+      max-width: 380px;
+    }
+
+    .hero-socials { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .social-btn {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--cream-dim);
+      border: 1px solid var(--border-mid);
+      padding: 7px 14px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: color .15s, border-color .15s, background .15s;
+      letter-spacing: 0.03em;
+    }
+
+    .social-btn:hover {
+      color: var(--green);
+      border-color: rgba(74,222,128,0.3);
+      background: var(--green-bg);
+    }
+
+    .icon { width: 14px; height: 14px; fill: currentColor; }
+
+    /* HERO RIGHT — stats block */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      transition: border-color .2s;
+    }
+
+    .stat-card:hover { border-color: rgba(74,222,128,0.2); }
+
+    .stat-n {
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 80px;
+    }
+
+    .stat-d {
+      font-size: 12px;
+      color: var(--cream-muted);
+      line-height: 1.5;
+    }
+
+    .stat-d strong {
+      display: block;
+      color: var(--cream-dim);
+      font-weight: 500;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+
+    /* ── BIO ── */
+    .bio-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 2.25rem;
+      margin-bottom: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bio-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(to bottom, var(--green), transparent);
+    }
+
+    .bio-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--green);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .bio-text {
+      font-size: 14px;
+      color: var(--cream-dim);
+      line-height: 1.9;
+    }
+
+    .bio-text + .bio-text { margin-top: 0.85rem; }
+
+    .bio-ai-note {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--cream-muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── PILLS ── */
+    .pills-block { margin-bottom: 4rem; }
+
+    .pills-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--cream-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      padding: 5px 13px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      letter-spacing: 0.02em;
+    }
+
+    .p-green  { color: #4ade80; border-color: rgba(74,222,128,.2);  background: rgba(74,222,128,.06); }
+    .p-teal   { color: #2dd4bf; border-color: rgba(45,212,191,.2);  background: rgba(45,212,191,.06); }
+    .p-blue   { color: #60a5fa; border-color: rgba(96,165,250,.2);  background: rgba(96,165,250,.06); }
+    .p-purple { color: #a78bfa; border-color: rgba(167,139,250,.2); background: rgba(167,139,250,.06); }
+    .p-amber  { color: #fbbf24; border-color: rgba(251,191,36,.2);  background: rgba(251,191,36,.06); }
+    .p-orange { color: #fb923c; border-color: rgba(251,146,60,.2);  background: rgba(251,146,60,.06); }
+    .p-cream  { color: #e8e0cc; border-color: rgba(232,224,204,.15);background: rgba(232,224,204,.04); }
+
+    /* ── SECTION HEADER ── */
+    .section { margin-bottom: 4rem; }
+
+    .section-hd {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+
+    .section-mono {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--green);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── PROJECT CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color .2s, background .2s, transform .2s;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      border-color: rgba(74,222,128,0.25);
+      background: var(--card-hover);
+      transform: translateY(-2px);
+    }
+
+    .card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .card-type {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: var(--green-bg);
+      border: 1px solid rgba(74,222,128,0.15);
+      padding: 3px 9px;
+      border-radius: 3px;
+    }
+
+    .card-arrow {
+      font-size: 14px;
+      color: var(--cream-muted);
+      transition: color .15s, transform .15s;
+    }
+
+    .card:hover .card-arrow { color: var(--green); transform: translate(2px,-2px); }
+
+    .card-title {
+      font-family: var(--display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--cream-muted);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .card-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--cream-muted);
+      border: 1px solid var(--border-mid);
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    /* Featured card stats */
+    .feat-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feat-stat {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+    }
+
+    .feat-stat-n {
+      font-family: var(--display);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .feat-stat-d {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--cream-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── EXP / EDU ── */
+    .timeline { display: flex; flex-direction: column; gap: 14px; }
+
+    .tl-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      transition: border-color .2s;
+    }
+
+    .tl-card:hover { border-color: rgba(74,222,128,0.18); }
+
+    .tl-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--cream-muted);
+      padding-top: 3px;
+      line-height: 1.6;
+    }
+
+    .tl-role {
+      font-family: var(--display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 2px;
+      letter-spacing: -0.01em;
+    }
+
+    .tl-gpa {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--cream-muted);
+    }
+
+    .tl-org {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--green);
+      margin-bottom: 7px;
+      letter-spacing: 0.02em;
+    }
+
+    .tl-desc {
+      font-size: 12.5px;
+      color: var(--cream-muted);
+      line-height: 1.72;
+    }
+
+    /* ── CONTACT ── */
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .contact-heading {
+      font-family: var(--display);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-heading span { color: var(--green); }
+
+    .contact-body {
+      font-size: 13px;
+      color: var(--cream-muted);
+      line-height: 1.8;
+      max-width: 420px;
+    }
+
+    .contact-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .btn-fill {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: #000;
+      background: var(--green);
+      padding: 10px 24px;
+      border-radius: 5px;
+      text-align: center;
+      transition: opacity .15s;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .btn-fill:hover { opacity: .88; }
+
+    .btn-ghost {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--cream-dim);
+      background: transparent;
+      border: 1px solid var(--border-mid);
+      padding: 10px 24px;
+      border-radius: 5px;
+      text-align: center;
+      transition: color .15s, border-color .15s;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .btn-ghost:hover { color: var(--green); border-color: rgba(74,222,128,0.3); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-mono {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--cream-muted);
+    }
+
+    .footer-mono span { color: var(--green); }
+
+    .footer-links { display: flex; gap: 16px; }
+
+    .footer-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--cream-muted);
+      transition: color .15s;
+    }
+
+    .footer-link:hover { color: var(--green); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-name { font-size: 38px; }
+      .cards { grid-template-columns: 1fr; }
+      .card.featured { grid-template-columns: 1fr; }
+      .feat-stats { flex-direction: row; flex-wrap: wrap; }
+      .tl-card { grid-template-columns: 1fr; gap: 0.25rem; }
+      .tl-date { padding-top: 0; }
+      .contact-card { grid-template-columns: 1fr; }
+      .contact-btns { flex-direction: row; flex-wrap: wrap; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <span class="nav-mono">mitaali</span>
+      <span class="nav-sep">·</span>
+      <span class="nav-name">Mitaali Patel</span>
+      <div class="avail"><span class="avail-dot"></span>available</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#education">education</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-tag">Data Analyst · BI Analyst</p>
+      <h1 class="hero-name">Mitaali<br><span>Patel</span></h1>
+      <p class="hero-desc">I turn messy data into decisions people actually act on. Whether it's a Power BI dashboard, a SQL pipeline, or a geospatial analysis, I care about making the output clear, useful, and impossible to ignore.</p>
+      <div class="hero-socials">
+        <a href="mailto:mitaalipatel2802@gmail.com" class="social-btn">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          email
+        </a>
+        <a href="https://github.com/MitaaliPatel" target="_blank" rel="noopener" class="social-btn">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          github
+        </a>
+        <a href="https://linkedin.com/in/mitaali-patel" target="_blank" rel="noopener" class="social-btn">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          linkedin
+        </a>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-n">20%</div>
+        <div class="stat-d"><strong>Efficiency improvement</strong>Data-driven ops optimization at PetBacker</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-n">50K+</div>
+        <div class="stat-d"><strong>Records analyzed</strong>IoT network traffic, cybersecurity threat detection</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-n">98.6%</div>
+        <div class="stat-d"><strong>Classification accuracy</strong>Insurance document pipeline, 14 categories</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIO -->
+  <div class="bio-block">
+    <p class="bio-ai-note">yes, I used AI to help build this — I'm a data scientist, it would've been strange not to.</p>
+    <p class="bio-label">about</p>
+    <p class="bio-text">I'm drawn to the moment when a messy spreadsheet or a raw data dump becomes something a stakeholder can actually use to make a decision. That's what got me into data analytics — and it's still what gets me excited about the work.</p>
+    <p class="bio-text">My background spans SQL querying and data wrangling, building Power BI dashboards for real operational teams, GIS-based geospatial analysis, and writing PySpark pipelines that process data at scale. I care about clean outputs, clear visuals, and making sure the insight actually lands — not just that the query ran. I also paint — detailed, intricate work that needs the same patience as getting a dashboard right. I think that shows up in how I approach data too.</p>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="pills-block">
+    <p class="pills-label">tech stack</p>
+    <div class="pills">
+      <span class="pill p-amber">Power BI</span>
+      <span class="pill p-amber">Tableau</span>
+      <span class="pill p-green">SQL</span>
+      <span class="pill p-green">Python</span>
+      <span class="pill p-teal">PySpark</span>
+      <span class="pill p-teal">ETL Pipelines</span>
+      <span class="pill p-orange">GIS · Geospatial</span>
+      <span class="pill p-orange">Streamlit</span>
+      <span class="pill p-blue">Scikit-learn</span>
+      <span class="pill p-blue">Data Wrangling · EDA</span>
+      <span class="pill p-purple">NLP · Document Classification</span>
+      <span class="pill p-cream">OPT Authorized</span>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-hd">
+      <h2 class="section-title">Projects</h2>
+      <span class="section-mono">dashboards, pipelines, and analyses</span>
+    </div>
+
+    <div class="cards">
+
+      <!-- FEMA — FEATURED -->
+      <div class="card featured">
+        <div>
+          <div class="card-top">
+            <span class="card-type">Capstone · 2026</span>
+            <a href="https://github.com/MitaaliPatel/UMBC-DATA606-Capstone" target="_blank" class="card-arrow">↗</a>
+          </div>
+          <h3 class="card-title">Disaster Resource Allocation Using Data Analytics</h3>
+          <p class="card-desc">Analyzed 3,611 county-year records merging OpenFEMA disaster assistance data with Census ACS socioeconomic indicators. Performed full EDA, feature engineering, and multi-model comparison to surface a key policy finding: applicant volume drives FEMA disbursements far more than poverty rate — challenging how relief is prioritized. Built a live Streamlit dashboard to make the findings accessible to non-technical audiences.</p>
+          <div class="card-tags">
+            <span class="card-tag">Python</span>
+            <span class="card-tag">EDA</span>
+            <span class="card-tag">OpenFEMA API</span>
+            <span class="card-tag">Census ACS</span>
+            <span class="card-tag">Streamlit</span>
+            <span class="card-tag">Data Visualization</span>
+          </div>
+        </div>
+        <div class="feat-stats">
+          <div class="feat-stat">
+            <div class="feat-stat-n">3,611</div>
+            <div class="feat-stat-d">county-year records analyzed</div>
+          </div>
+          <div class="feat-stat">
+            <div class="feat-stat-n">2</div>
+            <div class="feat-stat-d">data sources merged</div>
+          </div>
+          <div class="feat-stat">
+            <div class="feat-stat-n">live</div>
+            <div class="feat-stat-d">streamlit dashboard</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CYBERSECURITY DASHBOARD -->
+      <div class="card">
+        <div class="card-top">
+          <span class="card-type">BI · Analytics · 2025</span>
+          <a href="https://github.com/MitaaliPatel/Cyber-Security-Threat-Detection-Using-Big-Data" target="_blank" class="card-arrow">↗</a>
+        </div>
+        <h3 class="card-title">Cyber Threat Detection Dashboard</h3>
+        <p class="card-desc">Built an end-to-end analytics pipeline processing 50K+ IoT network records using PySpark. Designed Power BI and Kibana dashboards that translate complex threat patterns into clear, actionable visuals for non-technical stakeholders.</p>
+        <div class="card-tags">
+          <span class="card-tag">Power BI</span>
+          <span class="card-tag">PySpark</span>
+          <span class="card-tag">Kibana</span>
+          <span class="card-tag">ETL</span>
+          <span class="card-tag">SQL</span>
+        </div>
+      </div>
+
+      <!-- INSURANCE DOCUMENT CLASSIFICATION -->
+      <div class="card">
+        <div class="card-top">
+          <span class="card-type">NLP · Analytics · 2025</span>
+          <a href="#" class="card-arrow">↗</a>
+        </div>
+        <h3 class="card-title">Insurance Document Classification Pipeline</h3>
+        <p class="card-desc">Built for a real manager's workflow — an ML pipeline using sentence-transformers and Logistic Regression to automatically sort P&C insurance PDFs into 14 categories (policies, endorsements, renewals, cancellations, and more). Achieved 98.6% accuracy, cutting manual document triage time significantly.</p>
+        <div class="card-tags">
+          <span class="card-tag">Python</span>
+          <span class="card-tag">NLP</span>
+          <span class="card-tag">Scikit-learn</span>
+          <span class="card-tag">sentence-transformers</span>
+        </div>
+      </div>
+
+      <!-- DATA TRUST ENGINE -->
+      <div class="card">
+        <div class="card-top">
+          <span class="card-type">Data Quality · 2025</span>
+          <a href="https://github.com/MitaaliPatel/data-trust-engine" target="_blank" class="card-arrow">↗</a>
+        </div>
+        <h3 class="card-title">Data Trust Engine</h3>
+        <p class="card-desc">Automated data quality auditing engine that scores datasets for missingness, outliers, and feature leakage. Produces a trust score (0–100) with risk labels so analysts can catch upstream problems before they corrupt reporting or decisions downstream.</p>
+        <div class="card-tags">
+          <span class="card-tag">Python</span>
+          <span class="card-tag">Data Quality</span>
+          <span class="card-tag">EDA</span>
+          <span class="card-tag">Analytics</span>
+        </div>
+      </div>
+
+      <!-- BALTIMORE CRIME ANALYSIS -->
+      <div class="card">
+        <div class="card-top">
+          <span class="card-type">Geospatial · Analytics · 2025</span>
+          <a href="https://github.com/MitaaliPatel/Baltimore-Crime-Data-Analysis" target="_blank" class="card-arrow">↗</a>
+        </div>
+        <h3 class="card-title">Baltimore Crime Data Analysis</h3>
+        <p class="card-desc">Exploratory data analysis and geospatial mapping of Baltimore crime data to identify patterns by district, time, and crime type. Surfaced actionable trends through visual analysis and data storytelling.</p>
+        <div class="card-tags">
+          <span class="card-tag">Python</span>
+          <span class="card-tag">GIS</span>
+          <span class="card-tag">EDA</span>
+          <span class="card-tag">Data Visualization</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-hd">
+      <h2 class="section-title">Experience</h2>
+      <span class="section-mono">where I've worked</span>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-card">
+        <div class="tl-date">Jun 2026 → Present</div>
+        <div>
+          <p class="tl-role">Data Analyst Intern</p>
+          <p class="tl-org">UMBC Transportation Services · Baltimore, MD</p>
+          <p class="tl-desc">Descriptive, predictive, and prescriptive analytics for campus transit operations. Building dashboards for real-time monitoring, GIS-based geospatial route analysis, and defining KPIs to track on-time performance and service coverage.</p>
+        </div>
+      </div>
+
+      <div class="tl-card">
+        <div class="tl-date">Mar 2024 – Jul 2024</div>
+        <div>
+          <p class="tl-role">Customer Support Executive – Analytics</p>
+          <p class="tl-org">PetBacker · Ahmedabad, India</p>
+          <p class="tl-desc">Analyzed customer interaction data to identify response bottlenecks, driving a 20% operational efficiency improvement. Built Power BI dashboards tracking user behavior and engagement metrics used in cross-functional decision-making.</p>
+        </div>
+      </div>
+
+      <div class="tl-card">
+        <div class="tl-date">Dec 2022 – Jun 2023</div>
+        <div>
+          <p class="tl-role">Data Analysis & Machine Learning Intern</p>
+          <p class="tl-org">(n)Code Solutions · Gandhinagar, India</p>
+          <p class="tl-desc">EdTech analytics internship — built a predictive model achieving 92.9% accuracy on student performance data. Processed 50,000+ IoT records via PySpark ETL pipeline and presented findings to technical and non-technical stakeholders.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="section-hd">
+      <h2 class="section-title">Education</h2>
+      <span class="section-mono">academic background</span>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-card">
+        <div class="tl-date">2024 – May 2026</div>
+        <div>
+          <p class="tl-role">Master of Professional Studies in Data Science <span class="tl-gpa">· GPA 3.822</span></p>
+          <p class="tl-org">University of Maryland, Baltimore County (UMBC) · Baltimore, MD</p>
+          <p class="tl-desc">Capstone: FEMA Disaster Resource Allocation — analyzed 3,611 county-year records, built a live Streamlit dashboard, and surfaced a key policy finding on how disaster relief actually gets distributed. Coursework in data analytics, big data systems, SQL, visualization, and applied ML. OPT authorized.</p>
+        </div>
+      </div>
+
+      <div class="tl-card">
+        <div class="tl-date">Apr 2023</div>
+        <div>
+          <p class="tl-role">B.Tech in Information Technology <span class="tl-gpa">· GPA 3.36</span></p>
+          <p class="tl-org">Institute of Advanced Research (IAR) · Gandhinagar, India</p>
+          <p class="tl-desc">Undergraduate degree in Information Technology covering programming, data structures, algorithms, and software engineering fundamentals.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-hd">
+      <h2 class="section-title">Contact</h2>
+      <span class="section-mono">let's work on something that matters</span>
+    </div>
+    <div class="contact-card">
+      <div>
+        <h3 class="contact-heading">Open to <span>new roles.</span></h3>
+        <p class="contact-body">Looking for full-time Data Analyst and BI Analyst roles where the work has real impact. I love turning raw data into dashboards and decisions that stakeholders actually use. Open to remote, hybrid, or on-site in the U.S. — OPT authorized, no sponsorship required to start.</p>
+      </div>
+      <div class="contact-btns">
+        <a href="mailto:mitaalipatel2802@gmail.com" class="btn-fill">send email</a>
+        <a href="https://linkedin.com/in/mitaali-patel" target="_blank" rel="noopener" class="btn-ghost">linkedin</a>
+        <a href="https://github.com/MitaaliPatel" target="_blank" rel="noopener" class="btn-ghost">github</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-mono">Mitaali Patel · <span>© 2026</span></span>
+    <div class="footer-links">
+      <a href="#projects" class="footer-link">projects</a>
+      <a href="#experience" class="footer-link">experience</a>
+      <a href="#education" class="footer-link">education</a>
+      <a href="#contact" class="footer-link">contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
