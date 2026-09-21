@@ -1,37 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mitaali Patel | Data Analyst</title>
+  <meta name="description" content="Data Analyst and BI Analyst. Power BI, SQL, PySpark. MPS Data Science, UMBC '26." />
   <meta property="og:title" content="Mitaali Patel | Data Analyst" />
   <meta property="og:description" content="Data Analyst and BI Analyst. Power BI, SQL, PySpark. MPS Data Science, UMBC '26." />
   <meta property="og:image" content="https://mitaali.dev/preview.png" />
   <meta property="og:url" content="https://mitaali.dev" />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%234ade80'/><text font-size='38' font-family='Arial Black,sans-serif' font-weight='900' fill='%23000' x='50' y='54' text-anchor='middle' dominant-baseline='middle'>MP</text></svg>">
-  <meta name="description" content="Data Scientist & ML Engineer. MPS Data Science, UMBC '26." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%23f97316'/><text font-size='38' font-family='Arial Black,sans-serif' font-weight='900' fill='%23fff' x='50' y='54' text-anchor='middle' dominant-baseline='middle'>MP</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg:         #0b0f0c;
-      --bg2:        #0e1410;
-      --surface:    #121a14;
-      --card:       #161e18;
-      --card-hover: #1b2520;
-      --border:     rgba(255,255,255,0.06);
-      --border-mid: rgba(255,255,255,0.10);
-      --green:      #4ade80;
-      --green-dim:  #2d7a4a;
-      --green-bg:   rgba(74,222,128,0.07);
-      --cream:      #e8e0cc;
-      --cream-dim:  #a89e88;
-      --cream-muted:#5a5448;
-      --mono:       'JetBrains Mono', monospace;
-      --sans:       'Inter', sans-serif;
-      --display:    'Bricolage Grotesque', sans-serif;
+    /* DARK THEME (default) */
+    :root, [data-theme="dark"] {
+      --bg:           #080c18;
+      --bg2:          #0d1222;
+      --surface:      #111828;
+      --card:         #141f30;
+      --card-hover:   #1a2840;
+      --border:       rgba(255,255,255,0.07);
+      --border-mid:   rgba(255,255,255,0.12);
+      --text:         #f0ecff;
+      --text-dim:     #c0b8e0;
+      --text-muted:   #7068a0;
+      --orange:       #f97316;
+      --orange-bg:    rgba(249,115,22,0.10);
+      --pink:         #f472b6;
+      --pink-bg:      rgba(244,114,182,0.10);
+      --blue:         #60a5fa;
+      --blue-bg:      rgba(96,165,250,0.10);
+      --nav-bg:       rgba(8,12,24,0.92);
+      --mono:         'JetBrains Mono', monospace;
+      --sans:         'Inter', sans-serif;
+      --display:      'Bricolage Grotesque', sans-serif;
+    }
+
+    /* LIGHT THEME */
+    [data-theme="light"] {
+      --bg:           #f5f0eb;
+      --bg2:          #ede8e2;
+      --surface:      #ece7e0;
+      --card:         #ffffff;
+      --card-hover:   #fdf9f6;
+      --border:       rgba(0,0,0,0.08);
+      --border-mid:   rgba(0,0,0,0.14);
+      --text:         #0f1520;
+      --text-dim:     #2a3550;
+      --text-muted:   #7080a0;
+      --orange:       #ea6000;
+      --orange-bg:    rgba(234,96,0,0.08);
+      --pink:         #d4186a;
+      --pink-bg:      rgba(212,24,106,0.08);
+      --blue:         #1d4ed8;
+      --blue-bg:      rgba(29,78,216,0.08);
+      --nav-bg:       rgba(245,240,235,0.94);
     }
 
     html { scroll-behavior: smooth; }
@@ -39,23 +65,25 @@
     body {
       font-family: var(--sans);
       background: var(--bg);
-      color: var(--cream);
+      color: var(--text);
       font-size: 14px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      transition: background .3s, color .3s;
     }
 
     a { color: inherit; text-decoration: none; }
-    ::selection { background: var(--green); color: #000; }
+    ::selection { background: var(--orange); color: #fff; }
 
-    /* ── NAV ── */
+    /* NAV */
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(11,15,12,0.94);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
+      transition: background .3s;
     }
 
     .nav-inner {
@@ -74,7 +102,7 @@
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 500;
-      color: var(--green);
+      color: var(--orange);
       letter-spacing: 0.04em;
     }
 
@@ -82,17 +110,17 @@
       font-family: var(--display);
       font-size: 14px;
       font-weight: 700;
-      color: var(--cream);
+      color: var(--text);
       letter-spacing: 0.01em;
     }
 
-    .nav-sep { color: var(--cream-muted); font-size: 12px; }
+    .nav-sep { color: var(--text-muted); font-size: 12px; }
 
     .avail {
       font-family: var(--mono);
       font-size: 10px;
       font-weight: 500;
-      color: var(--green);
+      color: #4ade80;
       border: 1px solid rgba(74,222,128,0.25);
       padding: 3px 10px;
       border-radius: 3px;
@@ -105,50 +133,72 @@
     .avail-dot {
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: var(--green);
+      background: #4ade80;
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .nav-right { display: flex; align-items: center; gap: 8px; }
 
     .nav-links { display: flex; gap: 2px; list-style: none; }
 
     .nav-links a {
       font-family: var(--mono);
       font-size: 11px;
-      color: var(--cream-muted);
+      color: var(--text-muted);
       padding: 6px 12px;
       border-radius: 4px;
       transition: color .15s, background .15s;
       letter-spacing: 0.03em;
     }
 
-    .nav-links a:hover { color: var(--cream); background: var(--surface); }
+    .nav-links a:hover { color: var(--text); background: var(--surface); }
 
-    /* ── PAGE ── */
+    /* THEME TOGGLE */
+    .theme-toggle {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border-mid);
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: color .15s, border-color .15s, background .15s;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      color: var(--orange);
+      border-color: var(--orange);
+      background: var(--orange-bg);
+    }
+
+    /* PAGE */
     .page {
       max-width: 1000px;
       margin: 0 auto;
       padding: 88px 2rem 6rem;
     }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
       align-items: center;
-      padding: 4rem 0 4rem;
+      padding: 4rem 0;
       border-bottom: 1px solid var(--border);
       margin-bottom: 4rem;
     }
 
-    .hero-left {}
-
     .hero-tag {
       font-family: var(--mono);
       font-size: 11px;
-      color: var(--green);
+      color: var(--orange);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 1.25rem;
@@ -160,24 +210,24 @@
     .hero-tag::before {
       content: '';
       width: 24px; height: 1px;
-      background: var(--green);
+      background: var(--orange);
     }
 
     .hero-name {
       font-family: var(--display);
       font-size: 52px;
       font-weight: 800;
-      color: var(--cream);
+      color: var(--text);
       line-height: 1.0;
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
 
-    .hero-name span { color: var(--green); }
+    .hero-name span { color: var(--orange); }
 
     .hero-desc {
       font-size: 14px;
-      color: var(--cream-dim);
+      color: var(--text-dim);
       line-height: 1.85;
       margin-bottom: 2rem;
       max-width: 380px;
@@ -189,7 +239,7 @@
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 500;
-      color: var(--cream-dim);
+      color: var(--text-dim);
       border: 1px solid var(--border-mid);
       padding: 7px 14px;
       border-radius: 4px;
@@ -201,19 +251,14 @@
     }
 
     .social-btn:hover {
-      color: var(--green);
-      border-color: rgba(74,222,128,0.3);
-      background: var(--green-bg);
+      color: var(--orange);
+      border-color: var(--orange);
+      background: var(--orange-bg);
     }
 
     .icon { width: 14px; height: 14px; fill: currentColor; }
 
-    /* HERO RIGHT — stats block */
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    .hero-right { display: flex; flex-direction: column; gap: 12px; }
 
     .stat-card {
       background: var(--card);
@@ -226,33 +271,22 @@
       transition: border-color .2s;
     }
 
-    .stat-card:hover { border-color: rgba(74,222,128,0.2); }
+    .stat-card:hover { border-color: var(--orange); }
 
     .stat-n {
       font-family: var(--display);
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 800;
-      color: var(--green);
+      color: var(--orange);
       line-height: 1;
       flex-shrink: 0;
       min-width: 80px;
     }
 
-    .stat-d {
-      font-size: 12px;
-      color: var(--cream-muted);
-      line-height: 1.5;
-    }
+    .stat-d { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .stat-d strong { display: block; color: var(--text-dim); font-weight: 500; margin-bottom: 2px; font-size: 13px; }
 
-    .stat-d strong {
-      display: block;
-      color: var(--cream-dim);
-      font-weight: 500;
-      margin-bottom: 2px;
-      font-size: 13px;
-    }
-
-    /* ── BIO ── */
+    /* BIO */
     .bio-block {
       background: var(--card);
       border: 1px solid var(--border);
@@ -268,43 +302,38 @@
       position: absolute;
       top: 0; left: 0;
       width: 3px; height: 100%;
-      background: linear-gradient(to bottom, var(--green), transparent);
+      background: linear-gradient(to bottom, var(--orange), var(--pink));
     }
-
-    .bio-label {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--green);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .bio-text {
-      font-size: 14px;
-      color: var(--cream-dim);
-      line-height: 1.9;
-    }
-
-    .bio-text + .bio-text { margin-top: 0.85rem; }
 
     .bio-ai-note {
       font-family: var(--mono);
       font-size: 12px;
-      color: var(--cream-muted);
+      color: var(--text-muted);
       font-style: italic;
       margin-bottom: 1rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--border);
     }
 
-    /* ── PILLS ── */
+    .bio-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--orange);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .bio-text { font-size: 14px; color: var(--text-dim); line-height: 1.9; }
+    .bio-text + .bio-text { margin-top: 0.85rem; }
+
+    /* PILLS */
     .pills-block { margin-bottom: 4rem; }
 
     .pills-label {
       font-family: var(--mono);
       font-size: 10px;
-      color: var(--cream-muted);
+      color: var(--text-muted);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 1rem;
@@ -315,22 +344,18 @@
     .pill {
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 400;
       padding: 5px 13px;
       border-radius: 4px;
       border: 1px solid transparent;
       letter-spacing: 0.02em;
     }
 
-    .p-green  { color: #4ade80; border-color: rgba(74,222,128,.2);  background: rgba(74,222,128,.06); }
-    .p-teal   { color: #2dd4bf; border-color: rgba(45,212,191,.2);  background: rgba(45,212,191,.06); }
-    .p-blue   { color: #60a5fa; border-color: rgba(96,165,250,.2);  background: rgba(96,165,250,.06); }
-    .p-purple { color: #a78bfa; border-color: rgba(167,139,250,.2); background: rgba(167,139,250,.06); }
-    .p-amber  { color: #fbbf24; border-color: rgba(251,191,36,.2);  background: rgba(251,191,36,.06); }
-    .p-orange { color: #fb923c; border-color: rgba(251,146,60,.2);  background: rgba(251,146,60,.06); }
-    .p-cream  { color: #e8e0cc; border-color: rgba(232,224,204,.15);background: rgba(232,224,204,.04); }
+    .p-orange { color: var(--orange); border-color: var(--orange); background: var(--orange-bg); opacity:.85; }
+    .p-pink   { color: var(--pink);   border-color: var(--pink);   background: var(--pink-bg);   opacity:.85; }
+    .p-blue   { color: var(--blue);   border-color: var(--blue);   background: var(--blue-bg);   opacity:.85; }
+    .p-muted  { color: var(--text-muted); border-color: var(--border-mid); background: transparent; }
 
-    /* ── SECTION HEADER ── */
+    /* SECTION */
     .section { margin-bottom: 4rem; }
 
     .section-hd {
@@ -344,23 +369,19 @@
       font-family: var(--display);
       font-size: 28px;
       font-weight: 800;
-      color: var(--cream);
+      color: var(--text);
       letter-spacing: -0.02em;
     }
 
     .section-mono {
       font-family: var(--mono);
       font-size: 11px;
-      color: var(--green);
+      color: var(--pink);
       letter-spacing: 0.06em;
     }
 
-    /* ── PROJECT CARDS ── */
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
     .card {
       background: var(--card);
@@ -368,16 +389,11 @@
       border-radius: 12px;
       padding: 1.5rem;
       transition: border-color .2s, background .2s, transform .2s;
-      cursor: default;
       display: flex;
       flex-direction: column;
     }
 
-    .card:hover {
-      border-color: rgba(74,222,128,0.25);
-      background: var(--card-hover);
-      transform: translateY(-2px);
-    }
+    .card:hover { border-color: var(--orange); background: var(--card-hover); transform: translateY(-2px); }
 
     .card.featured {
       grid-column: 1 / -1;
@@ -387,12 +403,7 @@
       align-items: start;
     }
 
-    .card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-    }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 
     .card-type {
       font-family: var(--mono);
@@ -400,56 +411,41 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--green);
-      background: var(--green-bg);
-      border: 1px solid rgba(74,222,128,0.15);
+      color: var(--orange);
+      background: var(--orange-bg);
+      border: 1px solid var(--orange);
       padding: 3px 9px;
       border-radius: 3px;
+      opacity: .85;
     }
 
-    .card-arrow {
-      font-size: 14px;
-      color: var(--cream-muted);
-      transition: color .15s, transform .15s;
-    }
-
-    .card:hover .card-arrow { color: var(--green); transform: translate(2px,-2px); }
+    .card-arrow { font-size: 14px; color: var(--text-muted); transition: color .15s, transform .15s; }
+    .card:hover .card-arrow { color: var(--orange); transform: translate(2px,-2px); }
 
     .card-title {
       font-family: var(--display);
       font-size: 17px;
       font-weight: 700;
-      color: var(--cream);
+      color: var(--text);
       margin-bottom: 0.6rem;
       line-height: 1.25;
       letter-spacing: -0.01em;
     }
 
-    .card-desc {
-      font-size: 12.5px;
-      color: var(--cream-muted);
-      line-height: 1.75;
-      margin-bottom: 1.25rem;
-      flex: 1;
-    }
+    .card-desc { font-size: 12.5px; color: var(--text-dim); line-height: 1.75; margin-bottom: 1.25rem; flex: 1; }
 
     .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
     .card-tag {
       font-family: var(--mono);
       font-size: 10px;
-      color: var(--cream-muted);
+      color: var(--text-muted);
       border: 1px solid var(--border-mid);
       padding: 2px 8px;
       border-radius: 3px;
     }
 
-    /* Featured card stats */
-    .feat-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .feat-stats { display: flex; flex-direction: column; gap: 10px; }
 
     .feat-stat {
       background: var(--bg2);
@@ -462,19 +458,14 @@
       font-family: var(--display);
       font-size: 26px;
       font-weight: 800;
-      color: var(--green);
+      color: var(--orange);
       line-height: 1;
       margin-bottom: 3px;
     }
 
-    .feat-stat-d {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--cream-muted);
-      letter-spacing: 0.04em;
-    }
+    .feat-stat-d { font-family: var(--mono); font-size: 10px; color: var(--text-muted); letter-spacing: 0.04em; }
 
-    /* ── EXP / EDU ── */
+    /* TIMELINE */
     .timeline { display: flex; flex-direction: column; gap: 14px; }
 
     .tl-card {
@@ -489,47 +480,16 @@
       transition: border-color .2s;
     }
 
-    .tl-card:hover { border-color: rgba(74,222,128,0.18); }
+    .tl-card:hover { border-color: var(--pink); }
 
-    .tl-date {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--cream-muted);
-      padding-top: 3px;
-      line-height: 1.6;
-    }
+    .tl-date { font-family: var(--mono); font-size: 11px; color: var(--text-muted); padding-top: 3px; line-height: 1.6; }
 
-    .tl-role {
-      font-family: var(--display);
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 2px;
-      letter-spacing: -0.01em;
-    }
+    .tl-role { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; letter-spacing: -0.01em; }
+    .tl-gpa { font-family: var(--mono); font-size: 11px; font-weight: 400; color: var(--text-muted); }
+    .tl-org { font-family: var(--mono); font-size: 11px; color: var(--pink); margin-bottom: 7px; letter-spacing: 0.02em; }
+    .tl-desc { font-size: 12.5px; color: var(--text-dim); line-height: 1.72; }
 
-    .tl-gpa {
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--cream-muted);
-    }
-
-    .tl-org {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--green);
-      margin-bottom: 7px;
-      letter-spacing: 0.02em;
-    }
-
-    .tl-desc {
-      font-size: 12.5px;
-      color: var(--cream-muted);
-      line-height: 1.72;
-    }
-
-    /* ── CONTACT ── */
+    /* CONTACT */
     .contact-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -545,33 +505,22 @@
       font-family: var(--display);
       font-size: 26px;
       font-weight: 800;
-      color: var(--cream);
+      color: var(--text);
       letter-spacing: -0.02em;
       margin-bottom: 0.6rem;
     }
 
-    .contact-heading span { color: var(--green); }
+    .contact-heading span { color: var(--orange); }
+    .contact-body { font-size: 13px; color: var(--text-dim); line-height: 1.8; max-width: 420px; }
 
-    .contact-body {
-      font-size: 13px;
-      color: var(--cream-muted);
-      line-height: 1.8;
-      max-width: 420px;
-    }
-
-    .contact-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex-shrink: 0;
-    }
+    .contact-btns { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
 
     .btn-fill {
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 600;
-      color: #000;
-      background: var(--green);
+      color: #fff;
+      background: var(--orange);
       padding: 10px 24px;
       border-radius: 5px;
       text-align: center;
@@ -586,7 +535,7 @@
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 500;
-      color: var(--cream-dim);
+      color: var(--text-dim);
       background: transparent;
       border: 1px solid var(--border-mid);
       padding: 10px 24px;
@@ -597,13 +546,10 @@
       white-space: nowrap;
     }
 
-    .btn-ghost:hover { color: var(--green); border-color: rgba(74,222,128,0.3); }
+    .btn-ghost:hover { color: var(--pink); border-color: var(--pink); }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.75rem 2rem;
-    }
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
 
     .footer-inner {
       max-width: 1000px;
@@ -615,32 +561,20 @@
       gap: 1rem;
     }
 
-    .footer-mono {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--cream-muted);
-    }
-
-    .footer-mono span { color: var(--green); }
+    .footer-mono { font-family: var(--mono); font-size: 11px; color: var(--text-muted); }
+    .footer-mono span { color: var(--orange); }
 
     .footer-links { display: flex; gap: 16px; }
 
-    .footer-link {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--cream-muted);
-      transition: color .15s;
-    }
+    .footer-link { font-family: var(--mono); font-size: 11px; color: var(--text-muted); transition: color .15s; }
+    .footer-link:hover { color: var(--orange); }
 
-    .footer-link:hover { color: var(--green); }
-
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 700px) {
       .hero { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-name { font-size: 38px; }
       .cards { grid-template-columns: 1fr; }
       .card.featured { grid-template-columns: 1fr; }
-      .feat-stats { flex-direction: row; flex-wrap: wrap; }
       .tl-card { grid-template-columns: 1fr; gap: 0.25rem; }
       .tl-date { padding-top: 0; }
       .contact-card { grid-template-columns: 1fr; }
@@ -651,27 +585,32 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-left">
-      <span class="nav-mono">mitaali</span>
+      <span class="nav-mono">mitaali.dev</span>
       <span class="nav-sep">·</span>
       <span class="nav-name">Mitaali Patel</span>
       <div class="avail"><span class="avail-dot"></span>available</div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#projects">projects</a></li>
-      <li><a href="#experience">experience</a></li>
-      <li><a href="#education">education</a></li>
-      <li><a href="#contact">contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#experience">experience</a></li>
+        <li><a href="#education">education</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="toggleBtn" aria-label="Toggle theme" onclick="toggleTheme()">
+        <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
 <div class="page">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-left">
       <p class="hero-tag">Data Analyst · BI Analyst</p>
@@ -693,7 +632,6 @@
       </div>
     </div>
 
-    <!-- STATS -->
     <div class="hero-right">
       <div class="stat-card">
         <div class="stat-n">20%</div>
@@ -710,34 +648,30 @@
     </div>
   </div>
 
-  <!-- BIO -->
   <div class="bio-block">
-    <p class="bio-ai-note">Yes, I used AI to help build this. I'm a data scientist, it would've been strange not to.</p>
+    <p class="bio-ai-note">yes, I used AI to help build this. I'm a data analyst, it would've been strange not to.</p>
     <p class="bio-label">about</p>
-    <p class="bio-text">I'm drawn to the moment when a messy spreadsheet or a raw data dump becomes something a stakeholder can actually use to make a decision. That's what got me into data analytics and it's still what gets me excited about the work.</p>
-    <p class="bio-text">My background spans SQL querying and data wrangling, building Power BI dashboards for real operational teams, GIS-based geospatial analysis, and writing PySpark pipelines that process data at scale. I care about clean outputs, clear visuals, and making sure the insight actually lands, not just that the query ran. I also paint detailed, intricate work that needs the same patience as getting a dashboard right. I think that shows up in how I approach data too.</p>
+    <p class="bio-text">I'm drawn to the moment when a messy spreadsheet or a raw data dump becomes something a stakeholder can actually use to make a decision. That's what got me into data analytics, and it's still what gets me excited about the work.</p>
+    <p class="bio-text">My background spans SQL querying and data wrangling, building Power BI dashboards for real operational teams, GIS-based geospatial analysis, and writing PySpark pipelines that process data at scale. I care about clean outputs, clear visuals, and making sure the insight actually lands. I also paint, doing detailed intricate work that needs the same patience as getting a dashboard right.</p>
   </div>
 
-  <!-- SKILLS -->
   <div class="pills-block">
     <p class="pills-label">tech stack</p>
     <div class="pills">
-      <span class="pill p-amber">Power BI</span>
-      <span class="pill p-amber">Tableau</span>
-      <span class="pill p-green">SQL</span>
-      <span class="pill p-green">Python</span>
-      <span class="pill p-teal">PySpark</span>
-      <span class="pill p-teal">ETL Pipelines</span>
-      <span class="pill p-orange">GIS · Geospatial</span>
-      <span class="pill p-orange">Streamlit</span>
+      <span class="pill p-orange">Power BI</span>
+      <span class="pill p-orange">Tableau</span>
+      <span class="pill p-orange">SQL</span>
+      <span class="pill p-blue">Python</span>
+      <span class="pill p-blue">PySpark</span>
+      <span class="pill p-blue">ETL Pipelines</span>
+      <span class="pill p-pink">GIS · Geospatial</span>
+      <span class="pill p-pink">Streamlit</span>
       <span class="pill p-blue">Scikit-learn</span>
-      <span class="pill p-blue">Data Wrangling · EDA</span>
-      <span class="pill p-purple">NLP · Document Classification</span>
-      <span class="pill p-cream">OPT Authorized</span>
+      <span class="pill p-pink">NLP · Document Classification</span>
+      <span class="pill p-muted">OPT Authorized</span>
     </div>
   </div>
 
-  <!-- PROJECTS -->
   <section class="section" id="projects">
     <div class="section-hd">
       <h2 class="section-title">Projects</h2>
@@ -746,7 +680,6 @@
 
     <div class="cards">
 
-      <!-- FEMA — FEATURED -->
       <div class="card featured">
         <div>
           <div class="card-top">
@@ -767,7 +700,7 @@
         <div class="feat-stats">
           <div class="feat-stat">
             <div class="feat-stat-n">3,611</div>
-            <div class="feat-stat-d">county-year records analyzed</div>
+            <div class="feat-stat-d">county-year records</div>
           </div>
           <div class="feat-stat">
             <div class="feat-stat-n">2</div>
@@ -780,7 +713,6 @@
         </div>
       </div>
 
-      <!-- CYBERSECURITY DASHBOARD -->
       <div class="card">
         <div class="card-top">
           <span class="card-type">BI · Analytics · 2025</span>
@@ -797,14 +729,13 @@
         </div>
       </div>
 
-      <!-- INSURANCE DOCUMENT CLASSIFICATION -->
       <div class="card">
         <div class="card-top">
           <span class="card-type">NLP · Analytics · 2025</span>
           <a href="#" class="card-arrow">↗</a>
         </div>
         <h3 class="card-title">Insurance Document Classification Pipeline</h3>
-        <p class="card-desc">Built for a real manager's workflow, an ML pipeline using sentence-transformers and Logistic Regression to automatically sort P&C insurance PDFs into 14 categories (policies, endorsements, renewals, cancellations, and more). Achieved 98.6% accuracy, cutting manual document triage time significantly.</p>
+        <p class="card-desc">Built for a real manager's workflow: an ML pipeline using sentence-transformers and Logistic Regression to automatically sort P&C insurance PDFs into 14 categories. Achieved 98.6% accuracy, cutting manual document triage time significantly.</p>
         <div class="card-tags">
           <span class="card-tag">Python</span>
           <span class="card-tag">NLP</span>
@@ -813,14 +744,13 @@
         </div>
       </div>
 
-      <!-- DATA TRUST ENGINE -->
       <div class="card">
         <div class="card-top">
           <span class="card-type">Data Quality · 2025</span>
           <a href="https://github.com/MitaaliPatel/data-trust-engine" target="_blank" class="card-arrow">↗</a>
         </div>
         <h3 class="card-title">Data Trust Engine</h3>
-        <p class="card-desc">Automated data quality auditing engine that scores datasets for missingness, outliers, and feature leakage. Produces a trust score (0–100) with risk labels so analysts can catch upstream problems before they corrupt reporting or decisions downstream.</p>
+        <p class="card-desc">Automated data quality auditing engine that scores datasets for missingness, outliers, and feature leakage. Produces a trust score (0–100) with risk labels so analysts can catch upstream problems before they corrupt reporting downstream.</p>
         <div class="card-tags">
           <span class="card-tag">Python</span>
           <span class="card-tag">Data Quality</span>
@@ -829,7 +759,6 @@
         </div>
       </div>
 
-      <!-- BALTIMORE CRIME ANALYSIS -->
       <div class="card">
         <div class="card-top">
           <span class="card-type">Geospatial · Analytics · 2025</span>
@@ -848,7 +777,6 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
   <section class="section" id="experience">
     <div class="section-hd">
       <h2 class="section-title">Experience</h2>
@@ -886,7 +814,6 @@
     </div>
   </section>
 
-  <!-- EDUCATION -->
   <section class="section" id="education">
     <div class="section-hd">
       <h2 class="section-title">Education</h2>
@@ -915,7 +842,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="section-hd">
       <h2 class="section-title">Contact</h2>
@@ -936,7 +862,6 @@
 
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <span class="footer-mono">Mitaali Patel · <span>© 2026</span></span>
@@ -948,6 +873,25 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const sunIcon = '<path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0-5v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M2 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+  const moonIcon = '<path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>';
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeIcon').innerHTML = isDark ? sunIcon : moonIcon;
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  }
+
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.getElementById('themeIcon').innerHTML = saved === 'light' ? sunIcon : moonIcon;
+  }
+</script>
 
 </body>
 </html>
