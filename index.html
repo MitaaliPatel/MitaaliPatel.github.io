@@ -445,6 +445,17 @@
       border-radius: 3px;
     }
 
+    .card-dashboard-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--orange);
+      margin-top: 12px;
+      display: inline-block;
+      transition: opacity .15s;
+    }
+
+    .card-dashboard-link:hover { opacity: .75; }
+
     .feat-stats { display: flex; flex-direction: column; gap: 10px; }
 
     .feat-stat {
@@ -735,7 +746,7 @@
           <a href="#" class="card-arrow">↗</a>
         </div>
         <h3 class="card-title">Insurance Document Classification Pipeline</h3>
-        <p class="card-desc">Built for a real manager's workflow: an ML pipeline using sentence-transformers and Logistic Regression to automatically sort P&C insurance PDFs into 14 categories. Achieved 98.6% accuracy, cutting manual document triage time significantly.</p>
+        <p class="card-desc">Built for a real manager's workflow: an ML pipeline using sentence-transformers and Logistic Regression to automatically sort P&amp;C insurance PDFs into 14 categories. Achieved 98.6% accuracy, cutting manual document triage time significantly.</p>
         <div class="card-tags">
           <span class="card-tag">Python</span>
           <span class="card-tag">NLP</span>
@@ -750,7 +761,7 @@
           <a href="https://github.com/MitaaliPatel/data-trust-engine" target="_blank" class="card-arrow">↗</a>
         </div>
         <h3 class="card-title">Data Trust Engine</h3>
-        <p class="card-desc">Automated data quality auditing engine that scores datasets for missingness, outliers, and feature leakage. Produces a trust score (0–100) with risk labels so analysts can catch upstream problems before they corrupt reporting downstream.</p>
+        <p class="card-desc">Automated data quality auditing engine that scores datasets for missingness, outliers, and feature leakage. Produces a trust score (0 to 100) with risk labels so analysts can catch upstream problems before they corrupt reporting downstream.</p>
         <div class="card-tags">
           <span class="card-tag">Python</span>
           <span class="card-tag">Data Quality</span>
@@ -761,18 +772,19 @@
 
       <div class="card">
         <div class="card-top">
-          <span class="card-type">Geospatial · Analytics · 2025</span>
-          <a href="https://public.tableau.com/app/profile/mitaali.patel/viz/BaltimoreArrestAnalytics/BaltimoreArrestAnalytics" target="_blank" class="card-arrow">↗</a>
+          <span class="card-type">SQL · Tableau · 2026</span>
+          <a href="https://github.com/MitaaliPatel/baltimore-arrest-analytics" target="_blank" class="card-arrow">↗</a>
         </div>
         <h3 class="card-title">Baltimore Arrest Analytics Dashboard</h3>
-<p class="card-desc">End-to-end analytics project on 397,000+ BPD arrest records. SQL analysis in Python, data cleaning and wrangling, then a published Tableau dashboard covering arrest trends from 2015 to 2026, top offense types, district hotspots, time-of-day patterns, and demographic breakdowns.</p>
-<div class="card-tags">
-  <span class="card-tag">SQL</span>
-  <span class="card-tag">Python</span>
-  <span class="card-tag">Tableau</span>
-  <span class="card-tag">EDA</span>
-  <span class="card-tag">Data Visualization</span>
-</div>
+        <p class="card-desc">End-to-end analytics project on 397,000+ BPD arrest records. SQL analysis in Python, data cleaning and wrangling, then a published Tableau dashboard covering arrest trends from 2015 to 2026, top offense types, district hotspots, time-of-day patterns, and demographic breakdowns.</p>
+        <div class="card-tags">
+          <span class="card-tag">SQL</span>
+          <span class="card-tag">Python</span>
+          <span class="card-tag">Tableau</span>
+          <span class="card-tag">EDA</span>
+          <span class="card-tag">Data Visualization</span>
+        </div>
+        <a href="https://public.tableau.com/app/profile/mitaali.patel/viz/BaltimoreArrestAnalytics/BaltimoreArrestAnalytics" target="_blank" class="card-dashboard-link">View Live Dashboard ↗</a>
       </div>
 
     </div>
